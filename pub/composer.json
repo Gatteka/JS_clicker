@@ -1,0 +1,11 @@
+{
+  "name": "observer-module",
+  "description": "observer-module app",
+  "license": "MIT",
+  "type": "module",
+  "autoload": {
+    "psr-4": {
+      "Patterns\\Observer\\": ""
+    }
+  }
+}

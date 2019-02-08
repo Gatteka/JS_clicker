@@ -88,7 +88,7 @@ function riseStat(id) {
                 reloadStats(property);
                 console.log(property);
                 if (property === 'stamina') {
-                    person.health += 100;
+                    person.health += 20;
                     reloadStats('health')
                 }
             } else {
@@ -122,6 +122,7 @@ function checkExp() {
     let requiredExp = 20 * person.lvl;
     if (person.exp >= requiredExp) {
         person.lvl++;
+        // person.health = 100;
         epicName(person.lvl);
         person.exp -= requiredExp;
         this.newStatAvailable();
@@ -133,7 +134,6 @@ function checkExp() {
 
 function newStatAvailable() {
     document.getElementById('stat-button-area').style.cssText = 'visibility: visible;';
-
 }
 
 function reloadStats(stat) {

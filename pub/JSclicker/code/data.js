@@ -23,7 +23,7 @@ var enemies = [
         health: 200,
         lvl: 5,
         gainExp: 100,
-        face: '(O^---^O)',
+        face: '(U^---^U)',
     },
     zombie = {
         name: 'zombie',
@@ -41,7 +41,7 @@ var enemies = [
         health: 60,
         lvl: 3,
         gainExp: 30,
-        face: '|U - U |',
+        face: '|U - U|',
     },
     elf = {
         name: 'elf',
@@ -59,7 +59,7 @@ var enemies = [
         criticalChance: 5,
         lvl: 1,
         gainExp: 5,
-        face: '(:-|)',
+        face: '<(J J)>',
     }
 ];
 
@@ -70,28 +70,44 @@ var guns = [
         damage: 20,
         criticalChance: 10,
         itemLvl: 1,
-        weaponView: '===|__________ 7'
+        weaponView: 'o====||___________ 7'
     },
     catana = {
         name: 'catana',
         damage: 45,
         criticalChance: 15,
         itemLvl: 3,
-        weaponView: '[]n-n-n-||_______________________/'
+        weaponView: '[]n=n=n=||_______________________/'
     },
     axe = {
         name: 'axe',
         damage: 35,
         criticalChance: 15,
         itemLvl: 2,
-        weaponView: '========|^^^^|>'
+        weaponView: '=-=-=-=||^^^^||>'
     },
     dagger = {
         name: 'dagger',
         damage: 15,
         criticalChance: 25,
         itemLvl: 2,
-        weaponView: '[]===(|}__________7'
+        weaponView: '[]===(|}________7'
+    },
+
+];
+
+var faces = [
+    face1 = {
+        view: "(0 l 0)"
+    },
+    face2 = {
+        view:"|o l o|"
+    },
+    face3 = {
+        view:"|U l U|"
+    },
+    face4 = {
+        view: "(- l -)"
     },
 
 ];
