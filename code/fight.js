@@ -47,21 +47,13 @@ function runaway() {
 }
 
 function tryToRun() {
-    if (this.randomInteger(0, 10 + enemy.type.lvl) < person.agility) {
+    if (this.randomInteger(0, 5 + enemy.type.lvl) < person.agility) {
         return 1;
     } else {
         return 0;
     }
 }
 
-function reloadEnemyStats(stat) {
-    let enemyStatId = stat.split('Enemy')[0];
-    if (enemyStatId === 'name' || enemyStatId === 'face') {
-        document.getElementById(stat).innerHTML = enemy.type[enemyStatId];
-    } else {
-        document.getElementById(stat).innerHTML = enemyStatId + "-" + " " + enemy.type[enemyStatId];
-    }
-}
 
 function enemyDefeated() {
     enemy.type.health = 0;
@@ -72,10 +64,3 @@ function enemyDefeated() {
     this.hide('area');
 }
 
-function hide(element) {
-    document.getElementById(element).style.cssText = 'visibility: hidden';
-}
-
-function spawnRandomEnemy() {
-    enemy.type = Object.assign({}, enemies[getRandomInt(0, enemies.length)]);
-}

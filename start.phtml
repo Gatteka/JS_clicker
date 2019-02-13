@@ -1,12 +1,12 @@
 <?php
 
-$name1 = ["Bar", "Gew", "Ger", "Dan", "Cle"];
-$name2 = ["grod", "gard", "follas", "den"];
-$surname1 = ["Wilder", "Grase", "Trow", "Brean"];
-$surname2 = ["dold", "gard", "fols", "dren"];
-$superName = $name1[rand(0, count($name1) - 1)] . $name2[rand(0, count($name2) - 1)] . " " . $surname1[rand(0, count($surname1) - 1)] . $surname2[rand(0, count($surname2) - 1)];
-echo $superName;
-echo "</br>";
+//$name1 = ["Bar", "Gew", "Ger", "Dan", "Cle"];
+//$name2 = ["grod", "gard", "follas", "den"];
+//$surname1 = ["Wilder", "Grase", "Trow", "Brean"];
+//$surname2 = ["dold", "gard", "fols", "dren"];
+//$superName = $name1[rand(0, count($name1) - 1)] . $name2[rand(0, count($name2) - 1)] . " " . $surname1[rand(0, count($surname1) - 1)] . $surname2[rand(0, count($surname2) - 1)];
+//echo $superName;
+//echo "</br>";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +18,13 @@ echo "</br>";
     <script src="/JSclicker/code/data.js"></script>
 </head>
 <body>
-
-
+<div style="text-align: center" id="selectHeroClass">
+    <h1 style="text-align: center">Select your class</h1>
+    <button style="text-align: center;" id="class-warrior" class="button-x button4  " onclick="selectClass(this.id); ">Warrior</button>
+    <button style="text-align: center;" id="class-rogue" class="button-x button4  " onclick="selectClass(this.id); ">Rogue</button>
+    <button style="text-align: center;" id="class-mage" class="button-x button4  " onclick="selectClass(this.id); ">Mage</button>
+</div>
+<div id="gameArea" style="visibility: hidden">
 <div id="stats" class="border div-inline" style="width: 25%">
     <h1 id="name"></h1>
     <h2 id="lvl"></h2>
@@ -59,9 +64,16 @@ echo "</br>";
 <button onclick="riseStat(this.id)" class="button-x" id="stealth-Stat">stealthStat+</button>
 </div>
 <button style="text-align: center;" id="fight" class="button-x button3" onclick="newFight()">FIGHT</button>
-<div style="background-color: #4d4d4d; width: 100%; height: 20px;"></div>
-
+<button style="text-align: center;" id="goToPlace" class="button-x button4 placeChange" onclick="showPlaces()">GO TO PLACE</button>
+<div id="places" class="hidden">
+<button style="text-align: center;" id="goToPlace-village" class="button-x button4 placeChange " onclick="showPlaces(); goToPlace(this.id)">Village</button>
+<button style="text-align: center;" id="goToPlace-town" class="button-x button4 placeChange " onclick=" showPlaces();goToPlace(this.id)">Small Town</button>
+<button style="text-align: center;" id="goToPlace-castle" class="button-x button4 placeChange " onclick="showPlaces();goToPlace(this.id)">Castle</button>
+<button style="text-align: center;" id="goToPlace-forest" class="button-x button4 placeChange " onclick="showPlaces(); goToPlace(this.id)">Forest</button>
+</div>
+</div>
 <script src="/JSclicker/code/data.js"></script>
+<script src="/JSclicker/code/actions.js"></script>
 <script src="/JSclicker/init.js"></script>
 <script src="/JSclicker/code/fight.js"></script>
 </body>

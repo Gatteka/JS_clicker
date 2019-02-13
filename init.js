@@ -2,8 +2,10 @@ const gameStartActions = [
     person.name = window.prompt('What is your name?', 'Hero')
 ];
 
-
 var availableStatsCount = 1;
+
+
+
 
 
 function attack(person) {
@@ -22,12 +24,6 @@ function countDamage(person) {
     }
 }
 
-function randomInteger(min, max) {
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    rand = Math.round(rand);
-    return rand;
-}
-
 function criticalChance(criticalChance, agility) {
     if (this.randomInteger(0, 100) < (criticalChance + agility)) {
         return 2;
@@ -35,11 +31,6 @@ function criticalChance(criticalChance, agility) {
         return 1;
     }
 }
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
 
 person.attackPower = countDamage(person);
 
@@ -58,7 +49,6 @@ reloadStats('stealth');
 reloadStats('attackPower');
 reloadStats('health');
 
-
 function getGun(id) {
     alert(id);
     guns.forEach(function (element) {
@@ -73,6 +63,7 @@ function getGun(id) {
     console.log(person);
 }
 
+
 function riseStat(id) {
     let realId = id.split('-');
     let property;
@@ -83,17 +74,16 @@ function riseStat(id) {
                 availableStatsCount++;
                 if (person.lvl === availableStatsCount) {
                     hide('stat-button-area');
-                    // availableStatsCount = 0;
                 }
                 reloadStats(property);
                 console.log(property);
                 if (property === 'stamina') {
-                    person.health += 20;
-                    reloadStats('health')
+                    person.maxHealth += 10 * person.stamina;
+                    // person.health = person.maxHealth;
+                     reloadStats('health')
                 }
             } else {
                 hide('stat-button-area');
-                // availableStatsCount = 0;
             }
         }
     }
@@ -103,26 +93,21 @@ function levelUp() {
     person.exp += enemy.type.gainExp;
     reloadStats('exp');
     this.checkExp();
-    let requiredExp = 20 * person.lvl;
+    let requiredExp = person.expForNextLvl * person.lvl;
+    person.expForNextLvl = requiredExp;
+    reloadStats('exp');
     let realExp = person.exp;
-    while ((realExp - requiredExp) >= requiredExp){
+    while ((realExp - requiredExp) >= requiredExp) {
         this.checkExp();
     }
-    // if (person.exp >= requiredExp) {
-    //     person.lvl++;
-    //     epicName(person.lvl);
-    //     person.exp =- requiredExp;
-    //     this.newStatAvailable();
-    //     reloadStats('exp');
-    //     reloadStats('lvl');
-    // }
 }
 
 function checkExp() {
     let requiredExp = 20 * person.lvl;
     if (person.exp >= requiredExp) {
         person.lvl++;
-        // person.health = 100;
+        person.health = person.maxHealth;
+        reloadStats('health');
         epicName(person.lvl);
         person.exp -= requiredExp;
         this.newStatAvailable();
@@ -131,13 +116,8 @@ function checkExp() {
     }
 }
 
-
 function newStatAvailable() {
     document.getElementById('stat-button-area').style.cssText = 'visibility: visible;';
-}
-
-function reloadStats(stat) {
-    document.getElementById(stat).innerHTML = stat + "-" + " " + person[stat];
 }
 
 function epicName(level) {
@@ -156,5 +136,21 @@ function epicName(level) {
             break;
     }
 }
+
+
+function selectClass(id) {
+    let className = id.split('-')[1];
+    classes.forEach(function (value, index, array) {
+        if (className === value.name){
+            person.class = value;
+            console.log(person.class);
+        }
+    });
+
+
+
+}
+
+
 
 
