@@ -64,3 +64,28 @@ function enemyDefeated() {
     this.hide('area');
 }
 
+function levelUp() {
+    person.exp += enemy.type.gainExp;
+    // reloadStats('exp');
+    if (person.exp >= person.expForNextLvl) {
+        this.checkExp();
+     //   reloadStats('exp');
+    }
+    reloadStats('exp');
+
+}
+
+function checkExp() {
+    if (person.exp >= person.expForNextLvl) {
+        person.lvl++;
+        person.health = person.maxHealth;
+        reloadStats('health');
+        epicName(person.lvl);
+        person.exp -= person.expForNextLvl;
+        person.expForNextLvl *= person.lvl;
+        this.newStatAvailable();
+        reloadStats('exp');
+        reloadStats('lvl');
+    }
+}
+

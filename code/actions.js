@@ -19,17 +19,22 @@ function reloadEnemyStats(stat) {
     }
 }
 
+
 function reloadStats(stat) {
-    if (stat === 'health') {
-        document.getElementById(stat).innerHTML = stat + "-" + " " + person[stat] + " / " + person['maxHealth'];
-    } else if (stat ==='exp'){
-        document.getElementById(stat).innerHTML = stat + "-" + " " + person[stat] + " / " + person['expForNextLvl']
-    }
-    else {
-        document.getElementById(stat).innerHTML = stat + "-" + " " + person[stat];
+    switch (stat) {
+        case 'health' :
+            document.getElementById(stat).innerHTML = stat + "-" + " " + person[stat] + " / " + person['maxHealth'];
+            break;
+        case 'exp' :
+            document.getElementById(stat).innerHTML = stat + "-" + " " + person[stat] + " / " + person['expForNextLvl'];
+            break;
+        case 'className' :
+            document.getElementById(stat).innerHTML = person[stat];
+            break;
+        default:
+            document.getElementById(stat).innerHTML = stat + "-" + " " + person[stat];
     }
 }
-
 var placesVisible = false;
 
 function showPlaces() {
@@ -42,6 +47,30 @@ function showPlaces() {
     }
 }
 
+function riseStat(id) {
+    let realId = id.split('-');
+    let property;
+    for (property in person) {
+        if (realId['0'] === property) {
+            if (person.lvl > availableStatsCount) {
+                person[property]++;
+                availableStatsCount++;
+                if (person.lvl === availableStatsCount) {
+                    hide('stat-button-area');
+                }
+                reloadStats(property);
+                console.log(property);
+                if (property === 'stamina') {
+                    person.maxHealth += 10 * person.stamina;
+                    // person.health = person.maxHealth;
+                    reloadStats('health')
+                }
+            } else {
+                hide('stat-button-area');
+            }
+        }
+    }
+}
 
 
 function newStatAvailable() {
