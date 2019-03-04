@@ -57,6 +57,7 @@ function tryToRun() {
 
 function enemyDefeated() {
     enemy.type.health = 0;
+    getDropFromEnemy();
     reloadEnemyStats('healthEnemy');
     alert(enemy.type.name + ' is dead! You gain ' + enemy.type.gainExp + ' experience.');
     this.levelUp();
@@ -64,12 +65,24 @@ function enemyDefeated() {
     this.hide('area');
 }
 
+
+function getDropFromEnemy() {
+    var availableDrop = [];
+    objects.forEach(function (value, index, array) {
+        if (enemy.type.dropLvl >= value.itemLvl) {
+            availableDrop.push(value);
+        }
+    });
+    var randomElement = availableDrop[randomInteger(0, availableDrop.length)];
+    addToInventory(randomElement);
+    console.log(availableDrop);
+}
+
 function levelUp() {
     person.exp += enemy.type.gainExp;
     // reloadStats('exp');
     if (person.exp >= person.expForNextLvl) {
         this.checkExp();
-     //   reloadStats('exp');
     }
     reloadStats('exp');
 

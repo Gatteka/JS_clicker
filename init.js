@@ -14,7 +14,7 @@ function attack(person) {
 
 function countDamage(person) {
     if (person.weapon) {
-        return (person.strength) * 3 + (person.agility) + person.weapon.damage;
+        return (person.strength) * 2 + (person.agility) + person.weapon.damage;
     } else {
         return (person.strength) * 2;
     }

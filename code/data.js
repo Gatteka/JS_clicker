@@ -28,6 +28,7 @@ var enemies = [
         lvl: 5,
         gainExp: 100,
         face: '(U^---^U)',
+        dropLvl: 5
     },
     zombie = {
         name: 'zombie',
@@ -37,6 +38,7 @@ var enemies = [
         lvl: 4,
         gainExp: 35,
         face: '|-_-|',
+        dropLvl: 2
     },
     troll = {
         name: 'troll',
@@ -46,6 +48,7 @@ var enemies = [
         lvl: 3,
         gainExp: 25,
         face: '|U - U|',
+        dropLvl: 1
     },
     elf = {
         name: 'elf',
@@ -55,6 +58,7 @@ var enemies = [
         lvl: 2,
         gainExp: 12,
         face: '<( 0_0 )>',
+        dropLvl: 2
     },
     goblin = {
         name: 'goblin',
@@ -64,6 +68,17 @@ var enemies = [
         lvl: 1,
         gainExp: 8,
         face: '<(J_J)>',
+        dropLvl: 2
+    },
+    vampire = {
+        name: 'vampire',
+        damage: 25,
+        health: 95,
+        criticalChance: 18,
+        lvl: 5,
+        gainExp: 128,
+        face: '{0 (> <) 0}',
+        dropLvl: 3
     }
 ];
 
@@ -100,28 +115,74 @@ var guns = [
 
 ];
 
-var faces = [
-    face1 = {
-        view: "(0 l 0)"
+var objects = [
+    smallHillPotion = {
+        realName: 'smallHillPotion',
+        name: 'Small hill potion',
+        restoreHp: 50,
+        cost: 5,
+        restoreManna: 0,
+        use: 'restore-health',
+        itemLvl: 1,
+        objectView: '(~)'
     },
-    face2 = {
-        view: "|o l o|"
+    smallMannaPotion = {
+        realName: 'smallMannaPotion',
+        name: 'Small manna potion',
+        restoreHp: 10,
+        cost: 2,
+        restoreManna: 50,
+        use: 'restore-both',
+        itemLvl: 1,
+        objectView: '[~]'
     },
-    face3 = {
-        view: "|U l U|"
+    ultimatePotion = {
+        realName: 'ultimatePotion',
+        name: 'Super-mega potion',
+        restoreHp: 120,
+        restoreManna: 50,
+        cost: 15,
+        use: 'restore-both',
+        itemLvl: 3,
+        objectView: '{~~~}'
     },
-    face4 = {
-        view: "(- l -)"
+    superDrop = {
+        realName: 'superDrop',
+        name: 'Rare monster drop',
+        restoreHp: 0,
+        restoreManna: 0,
+        use: 'loot-loot',
+        cost: 35,
+        itemLvl: 5,
+        objectView: '/-/-/-/'
     },
 
 ];
+
+// var faces = [
+//     face1 = {
+//         view: "(0 l 0)"
+//     },
+//     face2 = {
+//         view: "|o l o|"
+//     },
+//     face3 = {
+//         view: "|U l U|"
+//     },
+//     face4 = {
+//         view: "(- l -)"
+//     },
+//     face4 = {
+//         view: "|0[|] 0 |"
+//     },
+// ];
 
 var classes = [
     warrior = {
         name: 'warrior',
         strength: 10,
-        agility: 3,
-        stamina: 5,
+        agility: 1,
+        stamina: 6,
         stealth: 1,
         weapon: null,
         armor: null,
@@ -131,7 +192,7 @@ var classes = [
         name: 'mage',
         strength: 2,
         agility: 3,
-        stamina: 4,
+        stamina: 6,
         stealth: 2,
         weapon: null,
         armor: null,
@@ -141,10 +202,13 @@ var classes = [
         name: 'rogue',
         strength: 3,
         agility: 8,
-        stamina: 2,
+        stamina: 5,
         stealth: 8,
         weapon: null,
         armor: null,
-        inventory: []
+        inventory: [
+            objects[smallHillPotion],
+            objects[ultimatePotion]
+        ]
     }
 ];

@@ -27,7 +27,7 @@
 <div id="gameArea" style="visibility: hidden">
 <div id="stats" class="border div-inline" style="width: 25%">
     <h1 id="name" ></h1>
-    <h1 id="className" style="background-color: #7a6b45"></h1>
+    <h1 id="className"></h1>
     <h2 id="lvl"></h2>
     <h2 id="exp"></h2>
     <h2 id="strength"></h2>
@@ -38,6 +38,8 @@
     <h4 id="weaponView"></h4>
     <h2 id="attackPower"></h2>
     <h2 id="health"></h2>
+    <div id="inventory" style="background-color: #7a6b45">
+    </div>
 </div>
 <div id="area" class="border hidden div-inline area">
     <div style="display: inline-block">
@@ -73,9 +75,10 @@
 <button style="text-align: center;" id="goToPlace-forest" class="button-x button4 placeChange " onclick="showPlaces(); goToPlace(this.id)">Forest</button>
 </div>
 </div>
-<script src="/JSclicker/code/data.js"></script>
-<script src="/JSclicker/code/actions.js"></script>
-<script src="/JSclicker/init.js"></script>
-<script src="/JSclicker/code/fight.js"></script>
+<script data-main="scripts/main" src="scripts/require.js"></script>
+<!--<script src="/JSclicker/code/data.js"></script>-->
+<!--<script src="/JSclicker/code/actions.js"></script>-->
+<!--<script src="/JSclicker/init.js"></script>-->
+<!--<script src="/JSclicker/code/fight.js"></script>-->
 </body>
 </html>
